@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roll Number Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Roll Number & Name</h1>
+    <button onclick="getNumber()">Generate</button>
+    <p id="result"></p>
+
+    <script>
+        function getNumber() {
+            fetch("/generate")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText =
+                    "Roll Number: " + data.roll_number + 
+                    " | Name: " + data.name;
+            });
+        }
+    </script>
+</body>
+</html>
+
